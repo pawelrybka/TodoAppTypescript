@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(16, 148, 201);
+    width: 20rem;
+    height: 21rem;
+    padding: 1.5rem;
+}
+
+form input {
+    width: 90%;
+    padding: 1.5rem;
+    margin:  auto;
+}
+
+form button {
+    width: 90%;
+    padding: 1.5rem;
+    margin: auto;
+    background-color: transparent;
+    border: 3px solid white;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+form ul li input{
+    width: 30px;
+}
+
+
