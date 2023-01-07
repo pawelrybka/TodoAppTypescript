@@ -6,13 +6,13 @@ const render = () => {
     tasksContainerElement.innerHTML = '';
     tasks.forEach((task) => {
         const taskElement = document.createElement("li");
+        if (task === '') {
+            return;
+        }
         taskElement.innerText = task;
         tasksContainerElement.appendChild(taskElement);
     });
 };
-// const newTask = (task: string) => {
-//   tasks.push(task)
-// }
 buttonSwitch.addEventListener("click", (event) => {
     event.preventDefault();
     tasks.push(inputElement.value);
