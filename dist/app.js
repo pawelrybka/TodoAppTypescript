@@ -1,21 +1,43 @@
-const tasksContainerElement = document.querySelector(".tasks");
+const buttonSwitch = document.querySelector("#switch");
+const list = document.querySelector(".tasks");
 const inputElement = document.querySelector("#input");
-const buttonSwitch = document.querySelector('#switch');
-const tasks = ["Wyrzucić śmieci", "Pójść na siłkę", "Nakarmić koty"];
+const tasks = [
+    {
+        name: "Wyrzucić śmieci",
+        done: false,
+    },
+    {
+        name: "Nakarmić koty",
+        done: true,
+    },
+    {
+        name: "Zrobić bica",
+        done: false,
+    },
+];
 const render = () => {
-    tasksContainerElement.innerHTML = '';
-    tasks.forEach((task) => {
-        const taskElement = document.createElement("li");
-        if (task === '') {
-            return;
-        }
-        taskElement.innerText = task;
-        tasksContainerElement.appendChild(taskElement);
+    list.innerHTML = '';
+    tasks.forEach((task, index) => {
+        const newTask = document.createElement("li");
+        const id = `task-${index}`;
+        const labelElement = document.createElement("label");
+        labelElement.innerText = task.name;
+        labelElement.setAttribute("for", id);
+        const checkBox = document.createElement("input");
+        checkBox.type = 'checkbox';
+        checkBox.name = task.name;
+        checkBox.id = id;
+        newTask.appendChild(labelElement);
+        newTask.appendChild(checkBox);
+        list.appendChild(newTask);
     });
 };
-buttonSwitch.addEventListener("click", (event) => {
-    event.preventDefault();
-    tasks.push(inputElement.value);
+const addTask = (task) => {
+    tasks.push(task);
+};
+buttonSwitch.addEventListener("click", (e) => {
+    e.preventDefault();
+    addTask({ name: inputElement.value, done: false });
     render();
 });
 render();
