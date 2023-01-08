@@ -8,7 +8,7 @@ const tasks = [
     },
     {
         name: "Nakarmić koty",
-        done: true,
+        done: false,
     },
     {
         name: "Zrobić bica",
@@ -27,6 +27,7 @@ const render = () => {
         checkBox.type = 'checkbox';
         checkBox.name = task.name;
         checkBox.id = id;
+        checkBox.checked = task.done;
         newTask.appendChild(labelElement);
         newTask.appendChild(checkBox);
         list.appendChild(newTask);
@@ -37,7 +38,8 @@ const addTask = (task) => {
 };
 buttonSwitch.addEventListener("click", (e) => {
     e.preventDefault();
-    addTask({ name: inputElement.value, done: false });
+    addTask({ name: inputElement.value, done: true });
     render();
 });
+addTask({ name: "Napierdolić sie jak księciuniu", done: true });
 render();
