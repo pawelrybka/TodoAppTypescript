@@ -58,3 +58,5 @@ addTask({ name: "Napierdolić sie jak księciuniu", done: true })
 render()
 
 
+console.log("srakowisko")
+
