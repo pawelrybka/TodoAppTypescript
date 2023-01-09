@@ -36,7 +36,10 @@ const render = () => {
     checkBox.name = task.name
     checkBox.id = id
     checkBox.checked = task.done
-    
+    checkBox.addEventListener("change", () => {
+      task.done = !task.done
+    })
+
     newTask.appendChild(labelElement)
     newTask.appendChild(checkBox)
   
@@ -50,7 +53,7 @@ const addTask = (task: { name: string; done: boolean }) => {
 
 buttonSwitch.addEventListener("click", (e) => {
   e.preventDefault()
-  addTask({ name: inputElement.value, done: true })
+  addTask({ name: inputElement.value, done: false })
   render()
 })
 

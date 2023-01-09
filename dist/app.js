@@ -28,6 +28,9 @@ const render = () => {
         checkBox.name = task.name;
         checkBox.id = id;
         checkBox.checked = task.done;
+        checkBox.addEventListener("change", () => {
+            task.done = !task.done;
+        });
         newTask.appendChild(labelElement);
         newTask.appendChild(checkBox);
         list.appendChild(newTask);
@@ -38,8 +41,9 @@ const addTask = (task) => {
 };
 buttonSwitch.addEventListener("click", (e) => {
     e.preventDefault();
-    addTask({ name: inputElement.value, done: true });
+    addTask({ name: inputElement.value, done: false });
     render();
 });
 addTask({ name: "Napierdolić sie jak księciuniu", done: true });
 render();
+console.log("srakowisko");
