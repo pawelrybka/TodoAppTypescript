@@ -11,6 +11,27 @@
         <form>
             <label for="name">Task:</label>
             <input type="text" id="input">
+            <ul class="categories">
+                <li>
+                    <input 
+                        type="radio" 
+                        name="category" 
+                        value="general"
+                        id="category-general"
+                    />
+                    <label for="category-general">general</label>
+                </li>
+                <li>
+                    <input 
+                        type="radio" 
+                        name="category" 
+                        value="general"
+                        id="category-gym"
+                    />
+                    <label for="category-gym">gym</label>
+                </li>
+            
+            </ul>
             <button id="switch">Add</button>
             <p>Todo:</p>
             <ul class="tasks"></ul>

@@ -1,6 +1,7 @@
 const buttonSwitch = document.querySelector("#switch");
 const list = document.querySelector(".tasks");
 const inputElement = document.querySelector("#input");
+const categories = ["general", "work", "gym", "hobby"];
 const tasks = [
     {
         name: "Wyrzucić śmieci",
@@ -9,6 +10,7 @@ const tasks = [
     {
         name: "Nakarmić koty",
         done: false,
+        category: "gym"
     },
     {
         name: "Zrobić bica",
@@ -20,12 +22,14 @@ const render = () => {
     tasks.forEach((task, index) => {
         const newTask = document.createElement("li");
         const id = `task-${index}`;
+        if (task.category) {
+            newTask.classList.add(task.category);
+        }
         const labelElement = document.createElement("label");
         labelElement.innerText = task.name;
         labelElement.setAttribute("for", id);
         const checkBox = document.createElement("input");
         checkBox.type = 'checkbox';
-        checkBox.name = task.name;
         checkBox.id = id;
         checkBox.checked = task.done;
         checkBox.addEventListener("change", () => {
@@ -44,6 +48,4 @@ buttonSwitch.addEventListener("click", (e) => {
     addTask({ name: inputElement.value, done: false });
     render();
 });
-addTask({ name: "Napierdolić sie jak księciuniu", done: true });
 render();
-console.log("srakowisko");

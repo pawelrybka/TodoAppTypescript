@@ -2,10 +2,15 @@ const buttonSwitch: HTMLElement = document.querySelector("#switch")
 const list: HTMLElement = document.querySelector(".tasks")
 const inputElement: HTMLInputElement = document.querySelector("#input")
 
-const tasks: {
-  name: string;
-  done: boolean;
-}[] = [
+interface Task {
+  name: string
+  done: boolean
+  category?: string
+}
+
+const categories: string[] = ["general", "work", "gym", "hobby"]
+
+const tasks: Task[] = [
   {
     name: "Wyrzucić śmieci",
     done: false,
@@ -13,6 +18,7 @@ const tasks: {
   {
     name: "Nakarmić koty",
     done: false,
+    category: "gym"
   },
   {
     name: "Zrobić bica",
@@ -26,14 +32,15 @@ const render = () => {
     
     const newTask: HTMLElement = document.createElement("li");
     const id: string = `task-${index}`
-    
+    if(task.category){
+      newTask.classList.add(task.category)
+    }
     const labelElement: HTMLLabelElement = document.createElement("label")
     labelElement.innerText = task.name;
     labelElement.setAttribute("for", id)
     
     const checkBox: HTMLInputElement = document.createElement("input")
     checkBox.type = 'checkbox'
-    checkBox.name = task.name
     checkBox.id = id
     checkBox.checked = task.done
     checkBox.addEventListener("change", () => {
@@ -47,7 +54,7 @@ const render = () => {
   })
 }
 
-const addTask = (task: { name: string; done: boolean }) => {
+const addTask = (task: Task) => {
   tasks.push(task)
 }
 
@@ -57,9 +64,7 @@ buttonSwitch.addEventListener("click", (e) => {
   render()
 })
 
-addTask({ name: "Napierdolić sie jak księciuniu", done: true })
 render()
 
 
-console.log("srakowisko")
 

@@ -41,4 +41,18 @@ form ul li input{
     width: 30px;
 }
 
+.gym{
+    color: blueviolet;
+}
+
+.general{
+    color: brown;
+}
+
+.categories{
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+
 
