@@ -9,6 +9,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background-color: black;
 }
 
 form{
@@ -16,8 +17,9 @@ form{
     flex-direction: column;
     background-color: rgb(16, 148, 201);
     width: 20rem;
-    height: 21rem;
+    height: fit-content;
     padding: 1.5rem;
+    gap: 20px;
 }
 
 form input {
@@ -38,21 +40,23 @@ form button {
 }
 
 form ul li input{
-    width: 30px;
-}
-
-.gym{
-    color: blueviolet;
-}
-
-.general{
-    color: brown;
+    width: fit-content;
+    margin: 1rem;
 }
 
 .categories{
-    display: flex;
-    list-style: none;
-    justify-content: center;
+    list-style-type: none;
 }
 
+.general{
+    color: green;
+}
+
+.gym{
+    color: red;
+}
+
+.work{
+    color: blue;
+}
 
