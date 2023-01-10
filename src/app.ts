@@ -40,7 +40,9 @@ const renderCategories = () => {
     
     const categoryInput: HTMLInputElement = document.createElement("input")
     categoryInput.type= "radio"
-    
+    categoryInput.name = "category"
+    categoryInput.value = category
+
     const categoryLabel: HTMLLabelElement = document.createElement("label")
     categoryLabel.innerText = category
     
@@ -56,6 +58,7 @@ const render = () => {
     
     const newTask: HTMLElement = document.createElement("li")
     const id: string = `task-${index}`
+    
     if(task.category){
       newTask.classList.add(task.category)
     }
@@ -80,14 +83,19 @@ const addTask = (task: Task) => {
 }
 
 buttonElement.addEventListener("click", (e) => {
-  
+  const selectedRadioElement: HTMLInputElement = document.querySelector("input[type='radio']:checked")
+  const selectedCategory: Category = selectedRadioElement.value as Category
   if(inputElement.value === ''){
     return
   } else
   e.preventDefault()
-  addTask({ name: inputElement.value, done: false, })
+  addTask({ name: inputElement.value, done: false, category: selectedCategory })
   render()
 })
 
+addTask({ name: "wysrać sie", done: true, category: "gym" })
+
+
 renderCategories()
 render()
+

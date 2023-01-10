@@ -25,6 +25,8 @@ const renderCategories = () => {
         const categoryElement = document.createElement("li");
         const categoryInput = document.createElement("input");
         categoryInput.type = "radio";
+        categoryInput.name = "category";
+        categoryInput.value = category;
         const categoryLabel = document.createElement("label");
         categoryLabel.innerText = category;
         categoryElement.appendChild(categoryInput);
@@ -56,13 +58,16 @@ const addTask = (task) => {
     tasks.push(task);
 };
 buttonElement.addEventListener("click", (e) => {
+    const selectedRadioElement = document.querySelector("input[type='radio']:checked");
+    const selectedCategory = selectedRadioElement.value;
     if (inputElement.value === '') {
         return;
     }
     else
         e.preventDefault();
-    addTask({ name: inputElement.value, done: false, });
+    addTask({ name: inputElement.value, done: false, category: selectedCategory });
     render();
 });
+addTask({ name: "wysrać sie", done: true, category: "gym" });
 renderCategories();
 render();
