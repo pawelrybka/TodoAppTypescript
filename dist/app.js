@@ -2,7 +2,8 @@ const taskList = document.querySelector(".tasks");
 const inputElement = document.querySelector("input");
 const buttonElement = document.querySelector("#switch");
 const categoriesContainer = document.querySelector(".categories");
-const categories = ["general", "gym", "work"];
+let selectedCategory;
+const categories = ["general", "gym", "hobby"];
 const tasks = [
     {
         name: "Pójść na siłownię",
@@ -17,7 +18,7 @@ const tasks = [
     {
         name: "Napisać kod",
         done: false,
-        category: "work"
+        category: "hobby"
     }
 ];
 const renderCategories = () => {
@@ -27,7 +28,12 @@ const renderCategories = () => {
         categoryInput.type = "radio";
         categoryInput.name = "category";
         categoryInput.value = category;
+        categoryInput.id = `category-${category}`;
+        categoryInput.addEventListener("change", () => {
+            selectedCategory = category;
+        });
         const categoryLabel = document.createElement("label");
+        categoryLabel.setAttribute("for", `category-${category}`);
         categoryLabel.innerText = category;
         categoryElement.appendChild(categoryInput);
         categoryElement.appendChild(categoryLabel);
@@ -58,16 +64,17 @@ const addTask = (task) => {
     tasks.push(task);
 };
 buttonElement.addEventListener("click", (e) => {
-    const selectedRadioElement = document.querySelector("input[type='radio']:checked");
-    const selectedCategory = selectedRadioElement.value;
     if (inputElement.value === '') {
         return;
     }
     else
         e.preventDefault();
-    addTask({ name: inputElement.value, done: false, category: selectedCategory });
+    addTask({
+        name: inputElement.value,
+        done: false,
+        category: selectedCategory
+    });
     render();
 });
-addTask({ name: "wysrać sie", done: true, category: "gym" });
 renderCategories();
 render();
