@@ -1,0 +1,17 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border: 2px solid  #646cff;
+    gap: 1rem;
+}
+
+.form input{
+    padding: 1rem;
+}
+
+
+
+
+    
+
