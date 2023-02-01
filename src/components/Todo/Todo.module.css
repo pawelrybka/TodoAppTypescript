@@ -1,11 +1,15 @@
 .todo{
     display: flex;
-    height: 5rem;
-    width: 25rem;
-    justify-content: center;
+    padding: 1rem;
+    width: 100%;
     gap: 5rem;
-    align-items: center;
     flex-direction: row;
-    background-color: green;
+    justify-content: space-between;
+    border: 2px solid black;
+    border-radius: 20px;
 }
 
+.icons{
+    display: flex;
+    gap: 1rem;
+}

@@ -8,10 +8,11 @@ const TodoList = () => {
   const[todos, setTodos] = useState([])
 
   const addTodo = todo => {
+    if (/^\s*$/.test(todo.text)) {
+      return;
+    }
     const newTodos= [todo, ...todos]
-
     setTodos(newTodos)
-    
   }
 
   const completeTodo = id => {
@@ -24,11 +25,20 @@ const TodoList = () => {
     setTodos(updatedTodos)
   }
  
+  const removeTodo = id => {
+    const removedArr = [...todos].filter(todo => todo.id !== id);
+
+    setTodos(removedArr);
+  };
+
   return (
     <div className={styles.todolist}>
-      <h1>What is the plan for today?</h1>
+      <h2>What is the plan for today?</h2>
       <TodoForm onSubmit={addTodo} />
-      <Todo todos={todos} />
+      <Todo 
+        todos={todos} 
+        removeTodo={removeTodo}
+      />
     </div>
   )
 }
