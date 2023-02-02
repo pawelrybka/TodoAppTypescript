@@ -38,6 +38,7 @@ const TodoList = () => {
       <Todo 
         todos={todos} 
         removeTodo={removeTodo}
+        completeTodo={completeTodo}
       />
     </div>
   )

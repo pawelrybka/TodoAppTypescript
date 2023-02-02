@@ -28,8 +28,6 @@ const Todo = ({ todos, completeTodo, removeTodo }) => {
                     size={30}/>
             </div>
         </div>
-           
-      
     ))
 }
 
