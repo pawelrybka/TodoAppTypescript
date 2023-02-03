@@ -12,7 +12,7 @@ const Todo = ({ todos, completeTodo, removeTodo }) => {
   
     return todos.map((todo, index) => (
         <div
-            className={styles.todo}
+            className={`${styles.todo} ${todo.isComplete ? styles.active : ''}`}
             key={index}
         >
             <div key={todo.id} onClick={() => completeTodo(todo.id)}>
